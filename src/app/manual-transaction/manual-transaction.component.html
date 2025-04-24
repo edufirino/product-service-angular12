@@ -1,0 +1,110 @@
+<div class="responsive-wrapper">
+  <form [formGroup]="transactionForm" class="transaction-form">
+    <div class="form-section">
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Month</mat-label>
+          <mat-select formControlName="month">
+            <mat-option *ngFor="let month of months" [value]="month.value">{{ month.label }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Year</mat-label>
+          <input matInput formControlName="year" type="number">
+          <mat-error *ngIf="serverYearError">{{ serverYearError }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Product</mat-label>
+          <mat-select formControlName="productCode" (selectionChange)="onProductChange()">
+            <mat-option *ngFor="let product of products" [value]="product.productCode">
+              {{ product.productDescription }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Cosif</mat-label>
+          <mat-select formControlName="cosifCode" (selectionChange)="onCosifChange()">
+            <mat-option *ngFor="let cosif of filteredCosifs" [value]="cosif.cosifCode">
+              {{ cosif.cosifCode }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field appearance="fill">
+          <mat-label>Amount</mat-label>
+          <input matInput formControlName="amount" type="number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="description-field">
+          <mat-label>Description</mat-label>
+          <input matInput formControlName="description">
+        </mat-form-field>
+      </div>
+
+      <div class="buttons">
+        <button mat-raised-button color="warn" (click)="onClearForm()">Clear</button>
+        <button mat-raised-button color="primary" (click)="onNewTransaction()">New</button>
+        <button mat-raised-button color="accent" (click)="onSaveTransaction()" [disabled]="transactionForm.invalid || !saveEnabled">Save</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="table-wrapper" *ngIf="manualTransactions.length">
+    <table mat-table [dataSource]="manualTransactions" class="mat-elevation-z8">
+      <ng-container matColumnDef="month">
+        <th mat-header-cell *matHeaderCellDef> Month </th>
+        <td mat-cell *matCellDef="let tx"> {{ tx.month }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="year">
+        <th mat-header-cell *matHeaderCellDef> Year </th>
+        <td mat-cell *matCellDef="let tx"> {{ tx.year }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="entryNumber">
+        <th mat-header-cell *matHeaderCellDef> Entry# </th>
+        <td mat-cell *matCellDef="let tx"> {{ tx.entryNumber }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="productCode">
+        <th mat-header-cell *matHeaderCellDef> Product </th>
+        <td mat-cell *matCellDef="let tx"> {{ tx.productCode }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cosifCode">
+        <th mat-header-cell *matHeaderCellDef> Cosif </th>
+        <td mat-cell *matCellDef="let tx"> {{ tx.cosifCode }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let tx"> {{ tx.amount }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let tx"> {{ tx.description }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="transactionDate">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let tx"> {{ tx.transactionDate | date:'shortDate' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="userCode">
+        <th mat-header-cell *matHeaderCellDef> User </th>
+        <td mat-cell *matCellDef="let tx"> {{ tx.userCode }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

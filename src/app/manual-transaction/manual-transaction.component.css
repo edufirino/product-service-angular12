@@ -1,0 +1,42 @@
+.responsive-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-section,
+.table-wrapper {
+  width: 100%;
+  max-width: 80%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-form-field.description-field {
+  grid-column: span 3;
+  max-width: calc(100% * 2.5 / 3);
+}
+
+.buttons {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+}
+
+table {
+  margin-top: 24px;
+  width: 100%;
+}

@@ -1,0 +1,35 @@
+# IDE and Editor files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Node and dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build and cache
+dist/
+.cache/
+.temp/
+
+# Angular CLI generated files
+/.angular/
+/browserlist
+/karma.conf.js
+
+# Test coverage and reports
+/coverage/
+/junit/
+/test-results.xml
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Local config overrides
+*.local.*
