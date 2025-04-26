@@ -8,7 +8,8 @@ Angular 12 frontend for managing manual accounting transactions.
 
 - Angular 12  
 - Angular Material  
-- TypeScript  
+- TypeScript
+- Node 16
 
 ---
 
