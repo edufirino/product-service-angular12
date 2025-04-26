@@ -24,7 +24,7 @@ export class ManualTransactionComponent implements OnInit {
   filteredCosifs: ProductCosif[] = [];
 
   months = Array.from({ length: 12 }, (_, i) => ({ value: i + 1, label: new Date(0, i).toLocaleString('default', { month: 'long' }) }));
-  displayedColumns = ['month', 'year', 'entryNumber', 'productCode', 'cosifCode', 'description', 'amount', 'transactionDate', 'userCode'];
+  displayedColumns = ['month', 'year', 'productCode', 'productDescription', 'entryNumber', 'description', 'amount'];
 
   serverYearError = '';
   saveEnabled = false;

@@ -4,8 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ManualTransactionComponent } from './manual-transaction/manual-transaction.component';
-
-// Add these Material modules:
+import { NgxCurrencyModule } from 'ngx-currency';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,10 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ManualTransactionComponent,
-  ],
+  declarations: [AppComponent, ManualTransactionComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -32,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatOptionModule,
     MatTableModule,
     MatButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxCurrencyModule,
   ],
   bootstrap: [AppComponent],
 })
