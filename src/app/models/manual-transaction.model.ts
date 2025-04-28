@@ -5,7 +5,5 @@ export interface ManualTransaction {
   productCode: string;
   cosifCode: string;
   description: string;
-  transactionDate: string;
-  userCode: string;
   amount: number;
 }

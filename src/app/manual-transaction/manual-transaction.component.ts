@@ -1,5 +1,3 @@
-// File: C:\dev\projects\product-service-angular\src\app\manual-transaction\manual-transaction.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 

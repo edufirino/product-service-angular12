@@ -1,8 +1,8 @@
 .responsive-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 16px;
+  align-items: center;
+  padding: 1rem;
   width: 100%;
   box-sizing: border-box;
 }
@@ -10,33 +10,147 @@
 .form-section,
 .table-wrapper {
   width: 100%;
-  max-width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .row {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
 }
 
 mat-form-field {
   width: 100%;
-  min-width: 300px;
+  min-width: 0;
+  display: block;
+  max-width: 100%;
+  flex: 1 1 350px;
 }
 
 mat-form-field.description-field {
-  grid-column: span 3;
-  max-width: calc(100% * 2.5 / 3);
+  grid-column: 1 / -1;
+  max-width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 768px) {
+  mat-form-field.description-field {
+    max-width: calc(100% * 2.5 / 3);
+  }
 }
 
 .buttons {
-  margin-top: 16px;
+  margin-top: 1.5rem;
   display: flex;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: flex-start;
+}
+
+@media (min-width: 768px) {
+  .buttons {
+    gap: 1rem;
+    justify-content: flex-start;
+  }
+}
+
+.buttons button {
+  flex: 1 1 auto;
+  min-width: 100px;
+}
+
+@media (min-width: 480px) {
+  .buttons button {
+    flex: 0 1 auto;
+  }
 }
 
 table {
-  margin-top: 24px;
   width: 100%;
+  margin-top: 1.5rem;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+@media (max-width: 767px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .mat-header-cell,
+  .mat-cell {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+.mat-header-cell {
+  font-weight: 600;
+  border-bottom-width: 1px;
+  background-color: #f5f5f5;
+}
+
+.mat-column-month,
+.mat-column-year {
+  width: 80px;
+}
+
+.mat-column-productCode {
+  width: 100px;
+}
+
+.mat-column-description {
+  max-width: 200px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+@media (min-width: 768px) {
+  .mat-column-description {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 767px) {
+  .form-section,
+  .table-wrapper {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  mat-form-field {
+    min-width: 0;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .buttons button {
+    width: 100%;
+  }
 }
